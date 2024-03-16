@@ -1,10 +1,17 @@
 # Experimental!
-~ "lib.ua" ~ Body BuildRequest! DefaultRequest Header Method Url
+~ "lib.ua"
+  ~ Body BuildRequest!
+  ~ FormatAddress FormatHeaders FormatPath FormatRequest
+  ~ Header Method PerformRequest Url
+  ~ ParseResponse
 
 BuildRequest!(
-  Url "http://example.com"
+  Url "https://httpbin.org/post"
   Method "POST"
-  Header "Accepts" "application/json"
-  Header "Content-Type" "application/x-www-form-urlencoded"
+  Header "Content-Type" "text/plain"
+  Header "Accept" "application/json"
   Body "name=John&age=25"
 )
+◌ ⸮ FormatRequest.
+PerformRequest
+ParseResponse

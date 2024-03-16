@@ -127,10 +127,10 @@ ParseHeader ← (
   ParseStatusLine
   ParseHeaders:
   InsertBoxed "headers"
-  InsertBoxed "body" :
 )
 
 ParseResponse ← (
   :SplitHeaderAndBody
   ParseHeader
+  InsertBoxed "body" :
 )

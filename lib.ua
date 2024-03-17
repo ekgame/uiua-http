@@ -9,11 +9,8 @@ Request ~ "request.ua"
   BearerAuth ← Request~BearerAuth
   PerformRequest ← Request~PerformRequest
 
-Response ~ "response.ua"
-  ParseResponse ← Response~ParseResponse
-
 BuildRequest! ← Request~BuildRequest!^!
-HttpRequest! ← ParseResponse PerformRequest BuildRequest!^!
+HttpRequest! ← PerformRequest BuildRequest!^!
 
 ---
 AssertOk ← ⍤ "Fail" ≍200°□get "status"

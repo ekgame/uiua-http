@@ -5,6 +5,8 @@ Request ~ "request.ua"
   Header ← Request~Header
   Method ← Request~Method
   Url ← Request~Url
+  BasicAuth ← Request~BasicAuth
+  BearerAuth ← Request~BearerAuth
   PerformRequest ← Request~PerformRequest
 
 Response ~ "response.ua"

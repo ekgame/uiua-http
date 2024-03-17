@@ -1,7 +1,7 @@
 # Experimental!
 
 ~ "utils.ua" ~ BuildMap! InsertBoxed
-~ "deps.ua" ~ ParseUri
+~ "deps.ua" ~ EncodeBsfString ParseUri
 ~ "response.ua" ~ ParseResponse
 
 DefaultRequest ↚ |0 BuildMap!(
@@ -58,6 +58,9 @@ Method ← (
   ⍤ :⊙:∊□:ValidMethods.:
   InsertBoxed "method"
 )
+
+BasicAuth ← Header "Authorization" ⊂"Basic " EncodeBsfString
+BearerAuth ← Header "Authorization" ⊂"Bearer "
 
 FormatMethod ↚ °□get "method"
 

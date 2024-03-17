@@ -1,0 +1,2 @@
+- [ ] Handle redirects
+- [ ] Add basic and bearer auth

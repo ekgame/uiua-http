@@ -7,6 +7,7 @@
 DefaultRequest ↚ |0 BuildMap!(
   InsertBoxed "uri" {}
   InsertBoxed "method" "GET"
+  InsertBoxed "protocol" "HTTP/1.0"
   InsertBoxed "headers" BuildMap!(
     InsertBoxed "User-Agent" "uiua-http"
     InsertBoxed "Content-Length" "0"
@@ -59,6 +60,8 @@ Method ← (
   InsertBoxed "method"
 )
 
+Protocol ← InsertBoxed "protocol"
+
 BasicAuth ← Header "Authorization" ⊂"Basic " EncodeBsfString
 BearerAuth ← Header "Authorization" ⊂"Bearer "
 
@@ -80,15 +83,17 @@ FormatHeaders ↚ (
 
 FormatBody ↚ °□get "body"
 
+FormatProtocol ↚ °□get "protocol"
+
 FormatAddress ↚ (
   °□get "uri"
   ⊃(°□get "domain"|°□get "port")
   $"_:_"
 )
 
-FormatRequest ↚ (
-  ⊃(FormatMethod|FormatPath|FormatHeaders|FormatBody)
-  $"_ _ HTTP/1.0\r\n_\r\n\r\n_"
+FormatRequest ← (
+  ⊃(FormatMethod|FormatPath|FormatProtocol|FormatHeaders|FormatBody)
+  $"_ _ _\r\n_\r\n\r\n_"
 )
 
 PerformRequest ← (

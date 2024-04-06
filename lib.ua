@@ -5,9 +5,14 @@ Request ~ "request.ua"
   Header ← Request~Header
   Method ← Request~Method
   Url ← Request~Url
+  Protocol ← Request~Protocol
   BasicAuth ← Request~BasicAuth
   BearerAuth ← Request~BearerAuth
   PerformRequest ← Request~PerformRequest
+  FormatHttpRequest ← Request~FormatRequest
+
+Response ~ "response.ua"
+  ParseHttpResponse ← Response~ParseResponse
 
 BuildRequest! ← Request~BuildRequest!^!
 HttpRequest! ← PerformRequest BuildRequest!^!
